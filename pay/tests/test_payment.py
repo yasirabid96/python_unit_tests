@@ -1,9 +1,7 @@
 from datetime import date
-from typing import Protocol
 from pay.credit_card import CreditCard
 from pay.order import LineItem, Order
 from pay.payment import pay_order
-from pytest import MonkeyPatch
 import pytest
 
 class PaymentProcessorMock:

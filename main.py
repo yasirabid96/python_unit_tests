@@ -1,6 +1,31 @@
 from pay.order import LineItem, Order
 from pay.payment import pay_order
 
+from typing import Protocol
+
+class Flyable(Protocol):
+    def fly(self) -> None:
+        ...
+
+class Bird:
+    def fly(self):
+        print("Flies in the sky")
+
+class Car:
+    def drive(self):
+        print("Drives on the road")
+    def fly(self):
+        print("Flies in the sky")    
+
+def use_flyable(f: Flyable):
+    f.fly()
+
+bird = Bird()
+car = Car()
+
+use_flyable(bird)  # Works fine, as Bird has a fly method
+use_flyable(car)   # Raises error in type checker, Car lacks fly method
+
 
 def main():
     # Test card number: 1249190007575069
